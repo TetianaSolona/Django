@@ -1,0 +1,88 @@
+{% extends 'author/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	{% if user.role == 0 %}
+	<div class="row">
+		<div class="col-sm-6">
+		<div class="card border-info mb-3">
+			<div class="card-body">
+			<h5 class="card-title">Make a New Order</h5>
+			<p class="card-text"> Order one of our new books.</p>
+			<a href="/book/all_books" class="btn btn-primary">Order Now</a>
+			</div>
+		</div>
+		</div>
+		<div class="col-sm-6">
+		<div class="card border-warning mb-3">
+			<div class="card-body">
+			<h5 class="card-title">My Orders</h5>
+			<p class="card-text">Check all my current orders</p>
+			<a href="{% url 'all_orders' %}" class="btn btn-primary">Click Here</a>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	{% else %}
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card border-info mb-3">
+				<div class="card-body">
+				<h5 class="card-title">Check All Authors</h5>
+				<a href="/all_authors" class="btn btn-primary">Authors</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card border-warning mb-3">
+				<div class="card-body">
+				<h5 class="card-title">Check All Users</h5>
+				<a href="{% url 'all_users' %}" class="btn btn-primary">Users</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card border-info mb-3">
+				<div class="card-body">
+				<h5 class="card-title">Check All Orders</h5>
+				<a href="{% url 'all_orders' %}" class="btn btn-primary">Orders</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card border-warning mb-3">
+				<div class="card-body">
+				<h5 class="card-title">Check All Books</h5>
+				<a href="/book/all_books" class="btn btn-primary">Books</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+{% else %}
+
+<div class="row">
+	<div class="col-sm-6">
+	  <div class="card border-info mb-3">
+		<div class="card-body">
+		  <h5 class="card-title">Try our New service</h5>
+		  <p class="card-text"> Register and try our app for ordering your favourite books.</p>
+		  <a href="{% url 'register_user' %}" class="btn btn-primary">Get Started</a>
+		</div>
+	  </div>
+	</div>
+	<div class="col-sm-6">
+	  <div class="card border-warning mb-3">
+		<div class="card-body">
+		  <h5 class="card-title">For regular users</h5>
+		  <p class="card-text">Log In as soon as possible and order your favourite books.</p>
+		  <a href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+		</div>
+	  </div>
+	</div>
+  </div>
+  {% endif %}
+{% endblock %}

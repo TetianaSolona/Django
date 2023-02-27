@@ -1,0 +1,60 @@
+{% extends 'author/base.html' %}
+
+{% block content %}
+
+{% if user.role == 1%}
+<h1>List of all Orders</h1>
+<table class="table">
+        <thead>
+                <tr class="table-dark">
+                        <th>Order Id</th>
+                        <th>User Email</th>
+                        <th>Plated End At</th>
+                        <th>Ended At</th>
+                        <th>End Order</th>
+                        <th>Delete Order</th>
+                </tr>
+        </thead>
+        <tbody>
+                {% for order in orders %}
+                <tr>
+                        <td>{{order.id}}</td>
+                        <td>{{order.user.email}}</td>
+                        <td>{{order.plated_end_at}}</td>
+                        <td>{{order.end_at}}</td>
+                        <td>
+                                {% if order.end_at == None %}
+                                        <a href="{% url 'end_order' order.id %}" class="btn btn-outline-danger">End Order</a>
+                                {% endif %}
+                        </td>
+                        <td><a href="{% url 'delete_order' order.id %}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {%endfor%}
+        </tbody>
+</table>
+
+{% endif %}
+{% if user.role == 0%}
+<h1>List of All My Ordered Books</h1>
+<table class="table">
+        <thead>
+                <tr class="table-dark">
+                        <th>Name</th>
+                        <th>Order End Date</th>
+                </tr>
+        </thead>
+        <tbody>
+                {% for order in orders %}
+                {% if order.user == user %}
+                <tr>
+                        <td>{{ order.book.name }}</td>
+                        <td>{{order.plated_end_at}}</td>
+
+                </tr>
+                {% endif %}
+                {% endfor %}
+        </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

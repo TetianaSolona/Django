@@ -1,0 +1,21 @@
+{%extends 'author/base.html'%}
+
+{%block content%}
+
+<form method="POST" novalidate>
+    <div class="mb-3">
+          {% csrf_token %}
+        <h2 class="text-center">Create Order For {{book.name}}</h2>
+
+        
+
+            <label for="planed_end_at" class="form-label">Planed End At:</label>
+            <input type="date" id="planed_end_at" name="planed_end_at" class="form-control">
+            <br>
+        <input type="submit" value="Create" class="btn btn-primary full-width">
+        <hr>
+    </div>
+</form>
+
+
+{%endblock content%}

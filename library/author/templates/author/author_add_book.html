@@ -1,0 +1,26 @@
+{% extends 'author/base.html' %}
+
+{% block content %}
+<form method="POST" novalidate>
+<div class="mb-3">
+	
+		{% csrf_token %}
+	  <label class="text-center"><h3> Select a book for {{author.name}} {{author.patronymic}} {{author.surname}}</h3></label>
+	  <select name="book" class="form-select" id="book">
+		{% for book in books %}
+		<option value="{{book.id}}">{{book}}</option>
+		
+		
+		{%endfor%}
+		</select>
+<hr>
+<input type="submit" value="Add" class="btn btn-primary">
+<hr>
+</div>
+</form>
+
+
+
+
+	
+{% endblock %}

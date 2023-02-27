@@ -1,0 +1,9 @@
+{% extends 'author/base.html' %}
+
+{% block content %}
+
+<h1>User View</h1>
+    <p></p>id:{{user.id}}  <strong>{{user.email}}</strong> {{user.first_name}} {{user.middle_name}} {{user.last_name}}
+    created at:{{user.created_at}} role:{{user.role}} 
+</p>
+{% endblock %}

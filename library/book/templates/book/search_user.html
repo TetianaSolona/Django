@@ -1,0 +1,21 @@
+{% extends 'author/base.html' %}
+
+{% block content %}
+	<h1>Results for user with id:{{searched}}</h1>
+<br>
+
+{% if searched %}
+
+{% for order in orders %}
+{% for user in users %}
+{% if order.user.id == user.id %}
+<p> Book name:{{order.book.name}} || Plated end at:{{order.plated_end_at}}<br></p>
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% else %}
+<h3>Hey! You Forgot To Search a Book...</h3>
+
+{% endif %}
+
+{% endblock %}

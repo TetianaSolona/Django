@@ -1,0 +1,20 @@
+
+
+{%extends 'author/base.html'%}
+
+{%block content%}
+<div class="center">
+  <h2 class="text-center">Sign Out</h2>
+  <form action="" method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <label for="password2" class="form-label">Repeat Password</label>
+      <input type="password" class="form-control" id="password2" name="password2">
+      <br>
+      <input type="submit" value="Create" class="btn btn-primary full-width">
+      <hr>
+  </form>
+</div>
+
+
+{%endblock content%}

@@ -1,0 +1,14 @@
+{%extends 'author/base.html'%}
+
+{%block content%}
+<div class="center">
+    <h2 class="text-center">Create Author</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Create" class="btn btn-primary full-width">
+        <hr>
+    </form>
+</div>
+
+{%endblock content%}
